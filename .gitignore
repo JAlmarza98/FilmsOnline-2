@@ -1,0 +1,4 @@
+# Ignores in API
+
+API/.env
+API/node_modules/
