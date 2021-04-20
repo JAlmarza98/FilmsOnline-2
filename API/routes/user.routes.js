@@ -9,6 +9,8 @@ const { userGet, userPut, userPost, userDelete } = require('../controllers/user.
 
 const router = Router();
 
+//TODO: Validaciones de seguridad
+
 router.get('/', userGet);
 
 router.post('/', [
@@ -20,8 +22,17 @@ router.post('/', [
     fieldsValidator
 ], userPost);
 
-router.put('/:id', userPut);
+router.put('/:id', [
+    check('id', 'No es un ID valido').isMongoId(),
+    check('id').custom(userID),
+    check('role').custom(validRole),
+    fieldsValidator
+], userPut);
 
-router.delete('/:id', userDelete);
+router.delete('/:id', [
+    check('id', 'No es un ID valido').isMongoId(),
+    check('id').custom(userID),
+    fieldsValidator
+], userDelete);
 
 module.exports = router;
