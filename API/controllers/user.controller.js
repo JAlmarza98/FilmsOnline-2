@@ -92,4 +92,27 @@ const userDelete = async (req, res) => {
     });
 }
 
-module.exports = { userGet, userPut, userPost, userDelete }
+const userPromote = async (req, res) => {
+
+    const { id } = req.params;
+
+    await User.findByIdAndUpdate(id, { role: 'ADMIN_ROLE' });
+
+    res.json({
+        msg: 'Usuario promocionado con exito'
+    });
+}
+
+const userDegrade = async (req, res) => {
+
+    const { id } = req.params;
+
+    await User.findByIdAndUpdate(id, { role: 'USER_ROLE' });
+
+    res.json({
+        msg: 'Usuario degradado con exito'
+    });
+}
+
+
+module.exports = { userGet, userPut, userPost, userDelete, userPromote, userDegrade }
