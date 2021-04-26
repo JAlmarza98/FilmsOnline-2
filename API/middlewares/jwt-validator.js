@@ -18,7 +18,6 @@ const jwtValidator = async (req, res, next) => {
 
         user_auth = await User.findById(uid);
 
-        console.log(user_auth);
         if (!user_auth) {
             return res.status(401).json({
                 message: "Token no valido"

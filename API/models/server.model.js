@@ -8,8 +8,12 @@ class Server {
 
         this.app = express();
         this.port = process.env.PORT;
+
+        //Rutas backend
         this.userPath = '/api/users';
         this.authPath = '/api/auth';
+        this.categoryPath = '/api/categories';
+        this.moviePath = '/api/movie';
 
         // Conexion a la base de datos
         this.connectDB();
@@ -40,6 +44,8 @@ class Server {
     routes() {
         this.app.use(this.userPath, require('../routes/user.routes'));
         this.app.use(this.authPath, require('../routes/auth.routes'));
+        this.app.use(this.categoryPath, require('../routes/category.routes'));
+        // this.app.use(this.moviePath, require('../routes/movie.routes'));
     }
 
     listen() {

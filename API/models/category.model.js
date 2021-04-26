@@ -4,6 +4,10 @@ const CategorySchema = Schema({
     name: {
         type: String,
         required: true
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 });
 
