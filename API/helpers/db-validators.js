@@ -1,6 +1,7 @@
 const Role = require('../models/role.model');
 const User = require('../models/user.model');
 const Category = require('../models/category.model');
+const Movie = require('../models/movie.model');
 
 const validRole = async (role = '') => {
 
@@ -34,5 +35,12 @@ const categoryID = async (id) => {
     }
 }
 
+const movieID = async (id) => {
 
-module.exports = { validRole, emailExist, userID, categoryID };
+    const movieExist = await Movie.findById(id);
+    if (!movieExist) {
+        throw new Error(`El ID no existe`);
+    }
+}
+
+module.exports = { validRole, emailExist, userID, categoryID, movieID };

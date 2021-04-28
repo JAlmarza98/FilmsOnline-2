@@ -13,7 +13,7 @@ class Server {
         this.userPath = '/api/users';
         this.authPath = '/api/auth';
         this.categoryPath = '/api/categories';
-        this.moviePath = '/api/movie';
+        this.moviePath = '/api/movies';
 
         // Conexion a la base de datos
         this.connectDB();
@@ -45,7 +45,7 @@ class Server {
         this.app.use(this.userPath, require('../routes/user.routes'));
         this.app.use(this.authPath, require('../routes/auth.routes'));
         this.app.use(this.categoryPath, require('../routes/category.routes'));
-        // this.app.use(this.moviePath, require('../routes/movie.routes'));
+        this.app.use(this.moviePath, require('../routes/movie.routes'));
     }
 
     listen() {
