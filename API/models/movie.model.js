@@ -21,14 +21,14 @@ const MovieSchema = Schema({
             type: Number
         }
     },
-    backdrop_path: {
+    backdrop: {
         type: String,
     },
     overview: {
         type: String,
         required: [true, 'La descripcion es obligatoria']
     },
-    poster_path: {
+    poster: {
         type: String,
     },
     vote_average: {
@@ -43,6 +43,9 @@ const MovieSchema = Schema({
     status: {
         type: Boolean,
         default: false
+    },
+    date: {
+        type: String
     }
 });
 

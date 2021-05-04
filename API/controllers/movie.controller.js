@@ -109,7 +109,8 @@ const postMovie = async (req, res) => {
         });
     }
 
-    const movie = new Movie({ title, year, category, saga, overview, vote_average });
+    const date = new Date();
+    const movie = new Movie({ title, year, category, saga, overview, vote_average, date });
     movie.save();
 
     res.json({
