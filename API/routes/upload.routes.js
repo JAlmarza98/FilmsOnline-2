@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 
 const { jwtValidator, adminRole, fieldsValidator, fileValidator } = require('../middlewares');
 
-const { showFile, updateFile } = require('../controllers/upload.controller');
+const { showFile, saveFile } = require('../controllers/upload.controller');
 
 const router = Router();
 
@@ -15,6 +15,6 @@ router.put('/:field/:id', [
     fileValidator,
     check('id', 'No es un ID valido').isMongoId(),
     fieldsValidator
-], updateFile);
+], saveFile);
 
 module.exports = router;
