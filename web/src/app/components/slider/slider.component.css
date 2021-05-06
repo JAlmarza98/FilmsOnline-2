@@ -1,0 +1,8 @@
+
+.slider{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}

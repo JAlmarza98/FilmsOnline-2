@@ -1,0 +1,15 @@
+.footer{
+  text-decoration: none;
+  text-align: center;
+}
+
+ul>li:nth-child(1){
+  opacity: 75%;
+  font-size:medium;
+}
+
+li{
+  list-style:none;
+  font-size: small;
+  opacity: 50%;
+}
