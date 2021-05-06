@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 offset-md-4 login-form mt-5 py-5 px-5">
+      <h1>Login</h1>
+      <form id="loginform" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input class="form-control" type="email" formControlName="email" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input class="form-control"type="password" formControlName="password" placeholder="Password">
+        </div>
+        <div class="mb-3 form-check">
+          <input id="checkbox-signup" type="checkbox" class="form-check-input" formControlName="remember">
+          <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" type="submit">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

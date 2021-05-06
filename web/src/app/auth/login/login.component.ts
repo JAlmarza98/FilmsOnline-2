@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import  Swal  from 'sweetalert2';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public formSubmitted = false;
+  public auth2: any;
+
+  public loginForm = this.fb.group({
+    email:[ localStorage.getItem('email') || '', [Validators.required, Validators.email]],
+    password:['', [Validators.required, Validators.minLength(6)]],
+    remember:[localStorage.getItem('remember') || false]
+  });
+
+  constructor( private router: Router, private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    this.userService.login(this.loginForm.value).subscribe( resp => {
+      if(this.loginForm.get('remember')?.value){
+        localStorage.setItem('email',this.loginForm.get('email')?.value);
+        localStorage.setItem('remember','true');
+      }else{
+        localStorage.removeItem('email');
+        localStorage.removeItem('remember');
+      }
+      this.router.navigateByUrl('/');
+    },(err) => {
+      Swal.fire('Error', err.error.message, 'error');
+    });
   }
 
 }

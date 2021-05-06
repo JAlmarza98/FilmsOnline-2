@@ -1,0 +1,7 @@
+.login-form{
+  background: rgba( 113, 158, 208, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 17.5px );
+  -webkit-backdrop-filter: blur( 17.5px );
+  border-radius: 10px;
+}
