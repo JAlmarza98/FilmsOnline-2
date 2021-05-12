@@ -1,11 +1,25 @@
 const Category = require('../models/category.model');
+const Movie = require('../models/movie.model');
 
 const getCategory = async (req, res) => {
+
+    const [total_categories, categories] = await Promise.all([
+        Category.countDocuments({ status: true }),
+        Category.find({ status: true })
+    ]);
+
+    res.json({
+        total_categories,
+        categories
+    });
+}
+
+const getCategoryAdmin = async (req, res) => {
 
     const [total_categories, inactive_categories, categories] = await Promise.all([
         Category.countDocuments(),
         Category.countDocuments({ status: false }),
-        Category.find()
+        Category.find({ status: true })
     ]);
 
     res.json({
@@ -13,6 +27,13 @@ const getCategory = async (req, res) => {
         inactive_categories,
         categories
     });
+}
+
+const getMoviesXCategory = async (req, res) => {
+    const { id } = req.params;
+    const movies = await Movie.find({ category: id, status: true }).populate('category', 'name status', Category)
+
+    res.json({ movies });
 }
 
 const postCategory = async (req, res) => {
@@ -63,4 +84,4 @@ const releaseCategory = async (req, res) => {
 }
 
 
-module.exports = { getCategory, postCategory, putCategory, deleteCategory, releaseCategory }
+module.exports = { getCategory, getCategoryAdmin, getMoviesXCategory, postCategory, putCategory, deleteCategory, releaseCategory }

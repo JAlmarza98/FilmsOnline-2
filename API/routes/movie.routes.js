@@ -5,7 +5,7 @@ const { fieldsValidator, jwtValidator, adminRole, } = require('../middlewares');
 
 const { movieID } = require('../helpers/db-validators');
 
-const { getMovie, getAdminMovies, postMovie, putMovie, blockMovie, unblockMovie } = require('../controllers/movie.controller')
+const { getMovie, getAdminMovies, getOneMovie, postMovie, putMovie, blockMovie, unblockMovie } = require('../controllers/movie.controller')
 
 const router = Router();
 
@@ -15,6 +15,12 @@ router.get('/private', [
     jwtValidator,
     adminRole
 ], getAdminMovies)
+
+router.get('/:id', [
+    check('id', 'No es un ID valido').isMongoId(),
+    check('id').custom(movieID),
+    fieldsValidator
+], getOneMovie)
 
 router.post('/', [
     jwtValidator,

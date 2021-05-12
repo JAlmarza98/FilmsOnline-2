@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
@@ -19,7 +18,7 @@ export class UserService {
 
   public usuario: Usuario;
 
-  constructor( private http: HttpClient, private router: Router) { }
+  constructor( private http: HttpClient) { }
 
   get token(): string {
     return localStorage.getItem('token') || '';

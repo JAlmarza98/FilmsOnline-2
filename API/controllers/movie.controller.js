@@ -95,6 +95,15 @@ const getAdminMovies = async (req, res) => {
     });
 }
 
+//Get de UNA pelicula
+const getOneMovie = async (req, res) => {
+    const { id } = req.params;
+
+    const movie = await Movie.findByIdAndUpdate(id);
+
+    res.json(movie);
+}
+
 //Crear pelicula
 const postMovie = async (req, res) => {
 
@@ -151,4 +160,4 @@ const unblockMovie = async (req, res) => {
 }
 
 
-module.exports = { getMovie, getAdminMovies, postMovie, putMovie, blockMovie, unblockMovie }
+module.exports = { getMovie, getAdminMovies, getOneMovie, postMovie, putMovie, blockMovie, unblockMovie }

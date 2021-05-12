@@ -1,3 +1,15 @@
-<div class="poster-card">
-  <img [src]="img" [alt]="title" class="img-fluid rounded">
+<div *ngIf="!noPoster">
+  <div class="poster-card">
+    <!-- <img [src]="poster" [alt]="movie.poster" class="img-fluid rounded"> -->{{poster}}
+  </div>
+  <p class="float-start ms-3">{{movie.title}}</p>
+  <p class="float-end">{{movie.vote_average}}⭐</p>
+</div>
+
+<div *ngIf="noPoster">
+  <div class="poster-card">
+    <img src="/assets/img/noimg.jpg" [alt]="movie.poster" class="img-fluid rounded">
+  </div>
+  <p class="float-start ms-3">{{movie.title}}</p>
+  <p class="float-end">{{movie.vote_average}}⭐</p>
 </div>

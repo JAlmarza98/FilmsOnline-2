@@ -115,8 +115,6 @@ const saveFile = async (req, res) => {
     const movie = await Movie.findById(id);
     const path = `./uploads/${movie.title}/${fileName}`;
 
-    console.log(path);
-
     // Mover la imagen
     file.mv(path, (err) => {
         if (err) {

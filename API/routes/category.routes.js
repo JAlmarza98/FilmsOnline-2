@@ -5,11 +5,22 @@ const { fieldsValidator, jwtValidator, adminRole, } = require('../middlewares');
 
 const { categoryID } = require('../helpers/db-validators');
 
-const { getCategory, postCategory, putCategory, deleteCategory, releaseCategory } = require('../controllers/category.controller')
+const { getCategory, postCategory, putCategory, deleteCategory, releaseCategory, getMoviesXCategory, getCategoryAdmin } = require('../controllers/category.controller')
 
 const router = Router();
 
 router.get('/', getCategory);
+
+router.get('/private', [
+    jwtValidator,
+    adminRole
+], getCategoryAdmin);
+
+router.get('/:id', [
+    check('id', 'No es un ID valido').isMongoId(),
+    check('id').custom(categoryID),
+    fieldsValidator
+], getMoviesXCategory);
 
 router.post('/', [
     jwtValidator,

@@ -1,21 +1,57 @@
+<!-- ***************** -->
+<!-- INICIO DEL LOADER -->
+<!-- ***************** -->
+<div class="container my-5" *ngIf="cargando">
+  <div class="row">
+    <div class="col-12 text-center text-white my-5">
+      <p>CARGANDO...</p>
+      <i class="fas fa-spinner fa-3x fa-pulse"></i>
+    </div>
+  </div>
+</div>
+<!-- ***************** -->
+<!--  FIN DEL LOADER   -->
+<!-- ***************** -->
 
-<div class="top-promo"><!-- TODO:trailer de la ultima pelicula añadida -->
-  <div class="gradient-filter">
-    <div class="container bg-dark-gray">
-      <div class="row">
-        <div class="promo-data text-white text-center py-5 col-12 col-md-6 mb-3">
-          <h1  class="fs-1"> Wonder Woman 1984</h1>
-          <button class="btn btn-light me-3">Añadir a la lista</button>
-          <button class="btn btn-primary">Reproducir</button>
+<ng-container *ngIf="!cargando">
+
+<!-- *************************** -->
+<!-- INICIO CABECERA - PROMOCION -->
+<!-- *************************** -->
+  <div class="top-promo"><!-- TODO:trailer de la ultima pelicula añadida -->
+    <div class="gradient-filter">
+      <div class="container bg-dark-gray">
+        <div class="row">
+          <div class="promo-data text-white text-center py-5 col-12 col-md-6 mb-3">
+            <h1  class="fs-1"> Wonder Woman 1984</h1>
+            <button class="btn btn-light me-3">Añadir a la lista</button>
+            <button class="btn btn-primary">Reproducir</button>
+          </div>
         </div>
       </div>
     </div>
+    <img src="assets/img/hipertextual-wonder-woman-1984-se-retrasa-manera-indefinida-culpa-covid-19-2020175769-scaled-1.jpg">
   </div>
-  <img src="assets/img/hipertextual-wonder-woman-1984-se-retrasa-manera-indefinida-culpa-covid-19-2020175769-scaled-1.jpg">
-</div>
 
-<div class="container-fluid bg-dark-gray">
-  <div class="row">
-    <app-slider class="mb-5" title="Mi Lista" [data]="miLista"></app-slider>
+<!-- *************************** -->
+<!--  FIN CABECERA - PROMOCION   -->
+<!-- *************************** -->
+<!-- *************************** -->
+<!--      INICIO CONTENIDO       -->
+<!-- *************************** -->
+  <div class="container-fluid bg-dark-gray">
+    <div class="row">
+
+      <!-- TODO:Crear lista -->
+      <!-- <app-slider class="mb-5" title="Mi Lista" [data]="miLista"></app-slider> -->
+
+      <app-slider *ngFor="let categoria of categorias"class="mb-5" [title]="categoria.name" [data]="categoria._id"></app-slider>
+
+
+    </div>
   </div>
-</div>
+<!-- *************************** -->
+<!--         FIN CONTENIDO       -->
+<!-- *************************** -->
+</ng-container>
+

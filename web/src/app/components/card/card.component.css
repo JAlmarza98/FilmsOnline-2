@@ -1,8 +1,7 @@
 .poster-card{
   width: 225px;
   height: 335px;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 8px;
   margin: 10px;
-  border-bottom: 3px solid blue;
 }
