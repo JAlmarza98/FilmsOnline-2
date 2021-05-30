@@ -11,6 +11,7 @@ import { SagasComponent } from './sagas/sagas.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { PagesComponent } from './pages.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 
 
@@ -21,7 +22,8 @@ import { PagesComponent } from './pages.component';
     SagasComponent,
     CategoriasComponent,
     PeliculasComponent,
-    PagesComponent
+    PagesComponent,
+    DetalleComponent
   ],
   imports: [
     CommonModule,

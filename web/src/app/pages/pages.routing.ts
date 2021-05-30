@@ -9,6 +9,7 @@ import { SagasComponent } from './sagas/sagas.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { PagesComponent } from './pages.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'peliculas', component: PeliculasComponent, data: { title: 'Peliculas' } },
     { path: 'sagas', component: SagasComponent, data: { title: 'Sagas' } },
     { path: 'categorias', component: CategoriasComponent, data: { title: 'Categorias'}},
+    { path: 'movie/:id', component: DetalleComponent},
     {path:'', redirectTo:'/home', pathMatch:'full'}
   ]}
 ];
